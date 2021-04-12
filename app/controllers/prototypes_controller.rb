@@ -9,4 +9,13 @@ class PrototypesController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def create
+    Prototype.create(prototype_params)
+  end
+
+  private
+  def prototype_params
+    params.require(:prototype).permit(:image, :text).merge(user_id: current_user.id)
+  end
 end
