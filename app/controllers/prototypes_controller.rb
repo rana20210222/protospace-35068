@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   #before_action :move_to_index, except: [:index,]
-  before_action :set_prototype, only: [:edit, :show, :update]
+  before_action :set_prototype, only: [:edit, :show, :update, :destroy]
 
 
   def index
@@ -36,7 +36,8 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    
+    @prototype.destroy
+    redirect_to root_path
   end
 
   private
